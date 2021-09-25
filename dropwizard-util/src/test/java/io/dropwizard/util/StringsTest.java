@@ -28,19 +28,4 @@ class StringsTest {
       assertThat(Strings.nullToEmpty(null)).isEmpty();
       assertThat(Strings.nullToEmpty("foo")).isEqualTo("foo");
   }
-
-  @Test
-  void repeatExceptions() {
-    assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> Strings.repeat("", -2_147_483_647))
-        .withMessage("invalid count: -2147483647" );
-    assertThatExceptionOfType(ArrayIndexOutOfBoundsException.class).isThrownBy(() -> Strings.repeat("00000000", 319_979_524))
-        .withMessage("Required array size too large: 2559836192");
-  }
-
-
-  @Test
-  void repeat() {
-      assertThat(Strings.repeat("", 0)).isEmpty();
-      assertThat(Strings.repeat("0", 6)).isEqualTo("000000");
-  }
 }
